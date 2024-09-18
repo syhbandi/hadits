@@ -1,12 +1,14 @@
-import { View, Text, TextInput, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Feather } from "@expo/vector-icons";
 import useGetBooks from "@/hooks/useGetBooks";
 
 const HomePage = () => {
-  const { isLoading, data } = useGetBooks();
+  const {
+    isLoading,
+    data: { data: books },
+  } = useGetBooks();
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -28,7 +30,7 @@ const HomePage = () => {
           <ActivityIndicator size={"large"} color={"blue"} />
         </View>
       ) : (
-        <Text>{JSON.stringify(data)}</Text>
+        <Text>{JSON.stringify(books)}</Text>
       )}
     </SafeAreaView>
   );
