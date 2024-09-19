@@ -1,38 +1,31 @@
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import useGetBooks from "@/hooks/useGetBooks";
+import BooksList from "@/components/BooksList";
+import Loading from "@/components/Loading";
 
 const HomePage = () => {
-  const {
-    isLoading,
-    data: { data: books },
-  } = useGetBooks();
+  const { isLoading, data } = useGetBooks();
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <View className="flex-1 bg-white">
       <Stack.Screen
         options={{
-          header: (props) => {
+          header: () => {
             return (
               <SafeAreaView>
                 <View className="flex-row items-center py-4 px-5">
-                  <Text className="text-2xl">My Hadith</Text>
+                  <Text className="text-2xl">Hadits</Text>
                 </View>
               </SafeAreaView>
             );
           },
         }}
       />
-      {isLoading ? (
-        <View className="flex-1 items-center justify-center">
-          <ActivityIndicator size={"large"} color={"blue"} />
-        </View>
-      ) : (
-        <Text>{JSON.stringify(books)}</Text>
-      )}
-    </SafeAreaView>
+      {isLoading ? <Loading /> : <BooksList books={data} />}
+    </View>
   );
 };
 
