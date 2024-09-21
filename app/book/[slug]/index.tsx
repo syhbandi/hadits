@@ -3,7 +3,6 @@ import {
   Text,
   ActivityIndicator,
   FlatList,
-  TouchableOpacity,
   RefreshControl,
 } from "react-native";
 import React, { useState } from "react";
@@ -52,8 +51,13 @@ const BookDetail = () => {
             }
 
             return (
-              <Text className="font-semibold text-lg">
-                {data?.pages[0].name}
+              <Text>
+                <Text className="text-lg font-semibold">
+                  {data?.pages[0].name}
+                </Text>
+                <Text className="text-neutral-500 text-lg ml-2">
+                  ({data?.pages[0].total} hadits )
+                </Text>
               </Text>
             );
           },
@@ -65,7 +69,10 @@ const BookDetail = () => {
         ListFooterComponent={renderFooter}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{
+          padding: 20,
+          rowGap: 10,
+        }}
         refreshControl={
           <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
         }
