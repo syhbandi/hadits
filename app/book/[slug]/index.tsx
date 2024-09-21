@@ -71,7 +71,7 @@ const BookDetail = () => {
         }
         ListEmptyComponent={() => (
           <View className="px-5">
-            <Text className="font-[NunitoSemiBold] text-neutral-600 text-center text-lg">
+            <Text className=" text-neutral-600 text-center text-lg">
               Oops! Tidak menemukan hadits
             </Text>
           </View>
