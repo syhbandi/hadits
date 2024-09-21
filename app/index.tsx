@@ -17,7 +17,7 @@ const HomePage = () => {
             return (
               <SafeAreaView>
                 <View className="flex-row items-center py-4 px-5">
-                  <Text className="text-2xl">Hadits</Text>
+                  <Text className="text-xl font-semibold">Hadits</Text>
                 </View>
               </SafeAreaView>
             );

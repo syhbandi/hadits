@@ -17,6 +17,7 @@ const HadithCard = ({ slug, hadith }: Props) => {
           <Entypo name="dots-two-vertical" size={20} color="black" />
         </View>
         <Text className="text-lg">{hadith.arab}</Text>
+        <Text>Terjemahan:</Text>
         <Text className="text-justify text-neutral-800">{hadith.id}</Text>
       </TouchableOpacity>
     </Link>

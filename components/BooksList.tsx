@@ -22,8 +22,17 @@ const BooksList = ({ books }: Props) => {
           </TouchableOpacity>
         </Link>
       )}
+      ListHeaderComponent={<Header />}
       contentContainerStyle={{ rowGap: 10 }}
     />
+  );
+};
+
+const Header = () => {
+  return (
+    <View className="px-5 py-3">
+      <Text className="font-semibold text-lg">Prawi tersedia</Text>
+    </View>
   );
 };
 
