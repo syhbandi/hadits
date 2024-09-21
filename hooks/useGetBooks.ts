@@ -3,12 +3,12 @@ import { useQuery } from "@tanstack/react-query";
 
 export type Books = {
   name: string;
-  id: string;
-  available: string;
+  slug: string;
+  total: string;
 };
 
 const getBooks = async () => {
-  const { data } = await hadithAPI.get("/books");
+  const { data } = await hadithAPI.get("/hadith");
   return data;
 };
 
@@ -16,6 +16,6 @@ export default function useGetBooks() {
   return useQuery({
     queryKey: ["books"],
     queryFn: getBooks,
-    select: ({ data }): Books[] => data,
+    select: (data): Books[] => data,
   });
 }

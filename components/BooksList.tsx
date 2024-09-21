@@ -12,13 +12,13 @@ const BooksList = ({ books }: Props) => {
     <FlatList
       data={books}
       renderItem={({ item }) => (
-        <Link asChild href={`/books/${item.name}`}>
+        <Link asChild href={`/book/${item.slug}`}>
           <TouchableOpacity className="mx-5 rounded-lg border border-neutral-200 p-5 space-y-2">
             <View className="h-10 w-10 rounded-full bg-blue-100 items-center justify-center">
               <Feather name="book-open" size={20} color={"blue"} />
             </View>
             <Text className="text-lg font-semibold">{item.name}</Text>
-            <Text className="text-neutral-500">{item.available} hadits</Text>
+            <Text className="text-neutral-500">{item.total} hadits</Text>
           </TouchableOpacity>
         </Link>
       )}
