@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import useGetHadiths from "@/hooks/useGetHadiths";
 import { Stack, useLocalSearchParams } from "expo-router";
 import HadithCard from "@/components/HadithCard";
+import Loading from "@/components/Loading";
 
 const BookDetail = () => {
   const { slug } = useLocalSearchParams<{ slug: string }>();
@@ -63,27 +64,31 @@ const BookDetail = () => {
           },
         }}
       />
-      <FlatList
-        data={data?.pages.flatMap((page) => page.items) || []}
-        renderItem={({ item }) => <HadithCard slug={slug} hadith={item} />}
-        ListFooterComponent={renderFooter}
-        onEndReached={loadMore}
-        onEndReachedThreshold={0.5}
-        contentContainerStyle={{
-          padding: 20,
-          rowGap: 10,
-        }}
-        refreshControl={
-          <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
-        }
-        ListEmptyComponent={() => (
-          <View className="px-5">
-            <Text className=" text-neutral-600 text-center text-lg">
-              Oops! Tidak menemukan hadits
-            </Text>
-          </View>
-        )}
-      />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <FlatList
+          data={data?.pages.flatMap((page) => page.items) || []}
+          renderItem={({ item }) => <HadithCard slug={slug} hadith={item} />}
+          ListFooterComponent={renderFooter}
+          onEndReached={loadMore}
+          onEndReachedThreshold={0.5}
+          contentContainerStyle={{
+            padding: 20,
+            rowGap: 10,
+          }}
+          refreshControl={
+            <RefreshControl refreshing={isRefreshing} onRefresh={onRefresh} />
+          }
+          ListEmptyComponent={() => (
+            <View className="px-5">
+              <Text className=" text-neutral-600 text-center text-lg">
+                Oops! Tidak menemukan hadits
+              </Text>
+            </View>
+          )}
+        />
+      )}
     </View>
   );
 };
