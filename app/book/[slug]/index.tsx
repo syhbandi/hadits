@@ -69,7 +69,13 @@ const BookDetail = () => {
       ) : (
         <FlatList
           data={data?.pages.flatMap((page) => page.items) || []}
-          renderItem={({ item }) => <HadithCard slug={slug} hadith={item} />}
+          renderItem={({ item }) => (
+            <HadithCard
+              slug={slug}
+              hadith={item}
+              total={data?.pages[0].total}
+            />
+          )}
           ListFooterComponent={renderFooter}
           onEndReached={loadMore}
           onEndReachedThreshold={0.5}

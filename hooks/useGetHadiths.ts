@@ -1,18 +1,6 @@
 import { hadithAPI } from "@/axios";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
-export type Hadith = {
-  number: string;
-  arab: string;
-  id: string;
-};
-
-type Response = {
-  name: string;
-  id: string;
-  hadiths: Hadith[];
-};
-
 const getHadiths = async (slug: string, pageParam: any) => {
   const response = await hadithAPI.get(`/hadith/${slug}?page=${pageParam}`);
   return response.data;
