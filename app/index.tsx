@@ -15,9 +15,9 @@ const HomePage = () => {
         options={{
           header: () => {
             return (
-              <SafeAreaView>
+              <SafeAreaView className="bg-white">
                 <View className="flex-row items-center py-4 px-5">
-                  <Text className="text-xl font-semibold">Hadits</Text>
+                  <Text className="text-3xl font-semibold">Hadits</Text>
                 </View>
               </SafeAreaView>
             );
